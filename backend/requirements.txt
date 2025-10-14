@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+apscheduler
+croniter
+httpx
+pytest
+pytest-asyncio
