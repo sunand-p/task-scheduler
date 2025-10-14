@@ -1,8 +1,8 @@
-#Task Scheduler
+# Task Scheduler
 A simple full stack task scheduler application built with FastAPI (Python) for the backend and React + TypeScript + Tailwind CSS for the frontend.
 It allows users to create, view and manage scheduled tasks using cron expressions.
 
-##Features
+## Features
 Create, edit and delete scheduled tasks
 Cron based scheduling with validation
 Automatic execution with retries
@@ -10,19 +10,19 @@ Task dependency support
 Simple UI with Tailwind CSS
 FastAPI backend with SQLite
 
-##Tech Stack
-###Frontend
+## Tech Stack
+### Frontend
 React + TypeScript
 Tailwind CSS
 Vite
 
-###Backend
+### Backend
 FastAPI
 SQLAlchemy + SQLite
 APScheduler
 CORS enabled
 
-##Setup Instructions
+## Setup Instructions
 1. Clone the repo
 git clone https://github.com/sunand-p/task-scheduler.git
 cd task-scheduler

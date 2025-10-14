@@ -49,6 +49,10 @@ def detect_cycle(db):
             return True
     return False
 
+@app.get("/")
+def get_home():    
+    return "Task Scheduler API"
+
 @app.post("/task")
 def create_task(payload: TaskIn):
     db = SessionLocal()

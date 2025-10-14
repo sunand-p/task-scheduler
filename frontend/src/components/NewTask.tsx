@@ -7,8 +7,8 @@ export default function NewTask() {
   const [name, setName] = useState("");
   const [cron, setCron] = useState("");
   const [command, setCommand] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState("");
 
   useEffect(() => {
     document.title = "New Task | Task Scheduler";
@@ -22,8 +22,8 @@ export default function NewTask() {
       alert("Invalid Cron!");
       return;
     }
-    setLoading(true);
-    setError("");
+    // setLoading(true);
+    // setError("");
 
     try {
       const response = await fetch(`${apiUrl}/task`, {
@@ -49,7 +49,7 @@ export default function NewTask() {
     } catch {
       alert("Error!");
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 

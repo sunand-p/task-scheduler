@@ -9,8 +9,8 @@ export default function EditTask() {
   const [name, setName] = useState("");
   const [cron, setCron] = useState("");
   const [command, setCommand] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,8 +40,8 @@ export default function EditTask() {
       alert("Invalid Cron!");
       return;
     }
-    setLoading(true);
-    setError("");
+    // setLoading(true);
+    // setError("");
 
     try {
       const response = await fetch(`${apiUrl}/task/${id}`, {
@@ -68,7 +68,7 @@ export default function EditTask() {
     } catch {
       alert("Error!");
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
