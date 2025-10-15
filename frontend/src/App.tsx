@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import EditTask from "./components/EditTask";
 import Executions from "./components/Executions";
 import Stats from "./components/Stats";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/task/new" element={<NewTask />} />
           <Route path="/task/:id/edit" element={<EditTask />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <footer>

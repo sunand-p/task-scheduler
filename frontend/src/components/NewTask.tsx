@@ -72,7 +72,7 @@ export default function NewTask() {
         <input
           value={cron}
           onChange={(e) => setCron(e.target.value)}
-          placeholder="Cron expression"
+          placeholder="Cron expression (Eg: 0 7 * * *)"
           className="w-full border p-2 rounded"
           required
         />

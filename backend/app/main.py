@@ -151,6 +151,35 @@ def update_task(task_id: int, payload: TaskIn):
     finally:
         db.close()
 
+@app.delete("/task/{task_id}")
+def delete_task(task_id: int):
+    db = SessionLocal()
+    try:
+        t = db.query(Task).filter(Task.id == task_id).first()
+        if not t:
+            raise HTTPException(404, "Task not found")
+
+        # Delete dependencies (both as parent or child)
+        db.query(TaskDependency).filter(
+            (TaskDependency.task_id == task_id) | (TaskDependency.depends_on_id == task_id)
+        ).delete()
+
+        # Delete the task itself
+        db.delete(t)
+        db.commit()
+
+        # Remove from scheduler if running
+        job_id = f"task_{task_id}"
+        from app.scheduler import scheduler
+        job = scheduler.get_job(job_id)
+        if job:
+            scheduler.remove_job(job_id)
+            logging.info(f"Removed job from scheduler: {job_id}")
+
+        return {"message": f"Task {task_id} deleted successfully"}
+    finally:
+        db.close()
+
 @app.post("/task/{task_id}/pause")
 def pause(task_id:int):
     db=SessionLocal()

@@ -24,6 +24,23 @@ export default function Tasks() {
     }
   }
 
+  async function deleteTask(id: number) {
+    if (confirm("Are you sure?")) {
+      try {
+        const res = await fetch(`${apiUrl}/task/${id}`, {
+          method: "DELETE",
+        });
+        if (res.ok) {
+          setCount((prev) => prev + 1);
+        } else {
+          alert("Error!");
+        }
+      } catch {
+        alert("Error!");
+      }
+    }
+  }
+
   async function pauseTask(id: number) {
     try {
       const res = await fetch(`${apiUrl}/task/${id}/pause`, {
@@ -112,6 +129,12 @@ export default function Tasks() {
                     >
                       Edit
                     </Link>
+                    <button
+                      className="cursor-pointer mr-2 hover:underline"
+                      onClick={() => deleteTask(t.id)}
+                    >
+                      Delete
+                    </button>
                     {t.paused ? (
                       <button
                         className="cursor-pointer mr-2 hover:underline"
