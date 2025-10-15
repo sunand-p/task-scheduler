@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import parser from "cron-parser";
 import { btn } from "./styles";
 import { useNavigate, useParams } from "react-router-dom";
+import { API } from "../api";
 
 export default function EditTask() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
   const [name, setName] = useState("");
   const [cron, setCron] = useState("");
@@ -20,7 +20,7 @@ export default function EditTask() {
 
   async function getTask() {
     try {
-      const res = await fetch(`${apiUrl}/task/${id}`);
+      const res = await fetch(`${API}/task/${id}`);
       const data = await res.json();
       setName(data.name);
       setCron(data.cron);
@@ -44,7 +44,7 @@ export default function EditTask() {
     // setError("");
 
     try {
-      const response = await fetch(`${apiUrl}/task/${id}`, {
+      const response = await fetch(`${API}/task/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

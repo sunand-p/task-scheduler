@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import parser from "cron-parser";
 import { btn } from "./styles";
+import { API } from "../api";
 
 export default function NewTask() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const [name, setName] = useState("");
   const [cron, setCron] = useState("");
   const [command, setCommand] = useState("");
@@ -26,7 +26,7 @@ export default function NewTask() {
     // setError("");
 
     try {
-      const response = await fetch(`${apiUrl}/task`, {
+      const response = await fetch(`${API}/task`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { btn } from "./styles";
+import { API } from "../api";
 
 export default function Tasks() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const [tasks, setTasks] = useState<any[]>([]);
   const [schedules, setSchedules] = useState<string[]>([]);
   const [showTask, setShowTask] = useState(false);
@@ -16,7 +16,7 @@ export default function Tasks() {
 
   async function getTasks() {
     try {
-      const res = await fetch(`${apiUrl}/tasks`);
+      const res = await fetch(`${API}/tasks`);
       const data = await res.json();
       setTasks(data);
     } catch {
@@ -27,7 +27,7 @@ export default function Tasks() {
   async function deleteTask(id: number) {
     if (confirm("Are you sure?")) {
       try {
-        const res = await fetch(`${apiUrl}/task/${id}`, {
+        const res = await fetch(`${API}/task/${id}`, {
           method: "DELETE",
         });
         if (res.ok) {
@@ -43,7 +43,7 @@ export default function Tasks() {
 
   async function pauseTask(id: number) {
     try {
-      const res = await fetch(`${apiUrl}/task/${id}/pause`, {
+      const res = await fetch(`${API}/task/${id}/pause`, {
         method: "POST",
       });
       if (res.ok) {
@@ -58,7 +58,7 @@ export default function Tasks() {
 
   async function resumeTask(id: number) {
     try {
-      const res = await fetch(`${apiUrl}/task/${id}/resume`, {
+      const res = await fetch(`${API}/task/${id}/resume`, {
         method: "POST",
       });
       if (res.ok) {
@@ -73,7 +73,7 @@ export default function Tasks() {
 
   async function triggerTask(id: number) {
     try {
-      const res = await fetch(`${apiUrl}/task/${id}/trigger`, {
+      const res = await fetch(`${API}/task/${id}/trigger`, {
         method: "POST",
       });
       if (res.ok) {

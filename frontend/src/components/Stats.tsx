@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { API } from "../api";
 
 export default function Stats() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const [tasks, setTasks] = useState<any[]>([]);
   const [stats, setStats] = useState<Record<string, any>>({});
 
@@ -12,7 +12,7 @@ export default function Stats() {
 
   async function getStats() {
     try {
-      const res = await fetch(`${apiUrl}/stats`);
+      const res = await fetch(`${API}/stats`);
       const data = await res.json();
       setStats(data);
       setTasks(data.upcoming);

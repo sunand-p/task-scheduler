@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { API } from "../api";
 
 export default function Executions() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const [tasks, setTasks] = useState<any[]>([]);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function Executions() {
 
   async function getExecs() {
     try {
-      const res = await fetch(`${apiUrl}/executions`);
+      const res = await fetch(`${API}/executions`);
       const data = await res.json();
       setTasks(data);
     } catch {
