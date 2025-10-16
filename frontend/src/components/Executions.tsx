@@ -29,7 +29,7 @@ export default function Executions() {
               <tr>
                 <th className="px-6 py-3">Task ID</th>
                 <th className="px-6 py-3">Status</th>
-                <th className="px-6 py-3">Time</th>
+                <th className="px-6 py-3">Time (UTC)</th>
                 <th className="px-6 py-3">Attempt</th>
               </tr>
             </thead>
@@ -42,7 +42,7 @@ export default function Executions() {
                   <td className="px-6 py-4">{t.task_id}</td>
                   <td className="px-6 py-4">{t.status}</td>
                   <td className="px-6 py-4">
-                    {new Date(t.start).toUTCString()}
+                    {new Date(t.start).toLocaleString()}
                   </td>
                   <td className="px-6 py-4">{t.attempt}</td>
                 </tr>

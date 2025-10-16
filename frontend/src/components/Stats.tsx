@@ -26,7 +26,7 @@ export default function Stats() {
       <h1 className="text-2xl font-semibold mb-4">Stats</h1>
       <p>Tasks: {stats.total_tasks}</p>
       <p>Executions: {stats.total_executions}</p>
-      <p>Success Rate: {stats.success_rate}%</p>
+      <p>Success Rate: {stats?.success_rate?.toFixed(2)}%</p>
       {tasks.length ? (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
           <table className="w-full text-sm text-gray-500 text-center">
